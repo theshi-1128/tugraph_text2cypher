@@ -1,0 +1,212 @@
+1.db_id == common ?
+
+2.测试集例子：
+    {
+        "db_id": "yago",
+        "question": "创建一个名为Zhangfei的人节点，其出生年份为153年，性别为1"
+    },
+    意思是：你根据question构造一个Cypher查询语句，平台把该Cypher语句放到yago db执行，最后的分数由 构造Cypher与标准答案的相似度 + 语法正确性 的加权得到
+
+
+3. text data中查询ID、唯一标识符 ：
+    {
+        "db_id": "yago",
+        "question": "查询ID为0、2和3的节点，创建0在2中出演角色为\"testaha\"，0与3结婚的关系，返回新建的关系。"
+    },
+    {
+        "db_id": "yago",
+        "question": "查找节点ID为4的节点的出边的唯一标识符"
+    },
+    common中的id：
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找唯一标识为\"0_3937_0_0_0\"的关系。",
+        "output": "MATCH ()-[r]->() WHERE euid(r) = \"0_3937_0_0_0\" RETURN r",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找ID为0的节点。",
+        "output": "MATCH (n) WHERE id(n)= 0 RETURN n",
+        "history": []
+    },
+
+    movie中id不一样：
+        {
+        "db_id": "movie",
+        "instruction": "",
+        "input": "获得给id为\"3915\"的电影m的打分的用户有哪些?返回相应的电影和用户",
+        "output": "MATCH (m:movie{id:\"3915\"})<-[:rate]-(a:user) RETURN a,m",
+        "history": []
+    },
+    {
+        "db_id": "movie",
+        "instruction": "",
+        "input": "匹配一个id为\"2654\"的节点，然后查找该节点通过任何关系指向的节点,返回这个路径p。",
+        "output": "MATCH p=(node{id:\"579\"})-[]->() RETURN p",
+        "history": []
+    },
+    finbench中的id:
+    {
+        "db_id": "movie",
+        "instruction": "",
+        "input": "从id为579的node节点到其他节点的所有直接相连的路径。",
+        "output": "MATCH p=(node{id:\"579\"})-[]->() RETURN p",
+        "history": []
+    },
+    {
+        "db_id": "finbench",
+        "instruction": "",
+        "input": "查找一个id是4817170722885471951的账户的createTime、isBlocked和type属性。",
+        "output": "MATCH (n:Account{id:4817170722885471951}) RETURN n.createTime as createTime, n.isBlocked as isBlocked, n.type as type",
+        "history": []
+    },
+    movie 和 finbench中每个实体都有id属性，所以翻译的时候把id理解为实体的id属性。
+    yago和the_three_body的实体都没有id属性，所以理解为数据库系统的节点id。(训练集中也没有这两个数据库中id的翻译方式，先和common一样)
+    
+    Answer：重写model:在训练数据前面加上db_id构造数据集，让模型能够学到不同数据库的写法
+    common数据库:common 中euid是边的属性（schema），id不是节点的属性
+
+4. 合并schema可行性：
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中与名称为\"PIA\"的组织m有出边关系的人哪些?返回节点a,节点m",
+        "output": "MATCH (m:organization{name:\"PIA\"})<-[:person_organization]-(a:person) RETURN a,m",
+        "history": []
+    }, 关系限定为[:person_organization]，因为the_three_body的schema中organization和person之间的关系只有这一种（ "constraints": [["person", "organization"]]）。
+    如果合并schema，可能会考虑多种关系：”MATCH (m:organization{name:\"PIA\"})<-[:x|y|z|……]-(a:person) RETURN a,m“ 这样相似度匹配的分数就会下降（x,y,z……为合并后可能的关系）
+
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne的标签是什么？他出生年份是多少？他与其他节点的关系总数是多少？"
+    },
+    MATCH (p:person {name: "Laurence Fishburne"}) RETURN labels(p) AS 标签, p.born AS 出生年份, size((p)--()) AS 关系总数
+    合并之后Person标签有大写也有小写，需要如何统一？
+    合并之后person实体的primary主键如何设置，是name还是id？
+    并且同为person实体，yago有birthday_year属性，movie有born属性，yoga有film实体，movie有movie实体，属性也都完全不一样，如何保留？
+    {
+        "db_id": "yago",
+        "question": "查询与任意电影相关联的关系总数是多少"
+    }, 执行在yago数据库执行，但是如果合并schema，可能返回的是movie实体而不是film实体，导致错误
+    
+
+    Answer：不需要schema，让模型自己学
+
+5.重写问题的必要性：
+    {
+        "db_id": "common",
+        "question": "如何创建Jada Pinkett Smith与《黑客帝国》中扮演Trinity的\"acted_in\"关系？"
+    },
+    {
+        "db_id": "common",
+        "question": "返回所有节点的ID是什么？"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询并更新所有权重为40的KNOWS关系r其新的权重为原权重加1"
+    },
+
+    Ans：增加重写模块，同时负责把db_id和question结合到一起
+
+6.训练集的错误
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查询标签为person的节点的相关信息，结果按id降序排序，保留去除第1个数据后的2个数据。",
+        "output": "MATCH (n:person) RETURN n.name ORDER BY n.name SKIP 1 LIMIT 2",
+        "history": []
+    },
+    训练集中没有yago数据
+
+    Answer：用数据增强流程，构造yago数据
+
+7.测试集的噪声：
+    {
+        "db_id": "yago",
+        "question": "查询并更新所有权重为40的KNOWS关系r其新的权重为原权重加1"
+    },
+    yago没有KNOWS关系，但还是得生成：
+    MATCH ()-[r:KNOWS]->()
+    WHERE r.weight = 40
+    SET r.weight = r.weight + 1
+    RETURN r
+
+    {
+        "db_id": "yago",
+        "question": "找到F认识I这条关系并将其删除"
+    },
+    yago没有KNOWS关系。
+
+    Answer:调完的模型有足够的泛化能力
+
+    
+8.模型输入： db_id , question
+    方案1： 对于不同的db_id，微调不同的模型。
+    方案2： 调一个模型
+
+    Answer:方案2
+
+如何进一步调优提高相似度： 对比学习，模型答案与标准答案的相似度。正样本/负样本
+在模型生成查询时，使用Beam Search等解码策略，生成多个候选结果，然后基于Jaro–Winkler相似度对这些候选结果进行打分，选取最相似的作为最终输出。
+后处理：语句自动纠错，根据语法文件设计实现一个语法自动纠错模块来完善大模型的预测结果
+TuGraph团队的数据增强方法了解：https://github.com/TuGraph-family/Awesome-Text2GQL
+选取sft最佳模型
+选取sft模型组合
+选取sft数据构造方式（prompt?）
+对不同数据库，如何构造sft数据使得模型能够分辨出不同数据库的歧义问题
+对比不同sft方式效果
+
+
+
+common 数据：
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查询查找数据库中带白色腰带的人。他们的名字、年龄和腰带颜色分别。",
+        "output": "MATCH (n) WHERE n.belt = 'white' RETURN n.name, n.age, n.belt",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找唯一标识为\"0_3937_0_0_0\"的关系。",
+        "output": "MATCH ()-[r]->() WHERE euid(r) = \"0_3937_0_0_0\" RETURN r",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找ID为0的节点。",
+        "output": "MATCH (n) WHERE id(n)= 0 RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne的标签是什么？他出生年份是多少？他与其他节点的关系总数是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "查找Laurence Fishburne，返回其标签、出生年份和他与其他节点的关系总数。"
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找Laurence Fishburne与其他节点的关系类型以'ac'开头的。他在这些关系中扮演了什么角色",
+        "output": "MATCH (n)-[r]->() WHERE n.name='Laurence Fishburne' AND type(r) STARTS WITH 'ac' RETURN type(r), r.role",
+        "history": []
+    },
+        {
+        "db_id": "common",
+        "question": "查找图数据库中返回第一个节点的键。"
+    },
+        {
+        "db_id": "common",
+        "question": "找到返回第一个节点的标签。"
+    },
+    {
+        "db_id": "common",
+        "question": "查找图数据库中两个列表相加的结果。"
+    }

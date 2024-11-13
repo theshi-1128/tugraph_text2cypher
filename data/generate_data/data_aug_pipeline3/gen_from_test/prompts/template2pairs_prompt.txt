@@ -1,0 +1,9 @@
+这是图数据库的schema:
+{schema}
+这是一个问题-cypher对的模板：
+{template}
+根据这个模板，生成10条符合schema的问题-cypher对数据
+保持中文问题不变，只有填充进去的数据为英文
+##请注意：返回的格式严格按照 {"question": , "cypher": }
+
+

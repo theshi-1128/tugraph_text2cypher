@@ -1,0 +1,296 @@
+[
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "找所有name属性值大于或等于'Peter'的节点，并返回这些节点的name 和 born属性值。",
+        "output": "MATCH (a) WHERE a.name >= 'Peter' RETURN a.name, a.born",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "返回名字是Carrie-Anne Moss的节点的信息是什么？",
+        "output": "MATCH (n {name: 'Carrie-Anne Moss'}) RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "出生于1967年或名字是Meg Ryan的人有哪些？",
+        "output": "MATCH (n {born: 1967}),(nm {name: \"Meg Ryan\"}) RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找数据库中出演《黑客帝国》的演员。",
+        "output": "MATCH (matrix:movie {title: 'The Matrix'})<-[:acted_in]-(actor) RETURN actor.name",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找数据库中查询Laurence Fishburne出演的电影。这些电影的导演都是谁？",
+        "output": "MATCH (laurence {name: 'Laurence Fishburne'})-[:acted_in]->(movie)<-[:directed]-(director) RETURN movie.title, director.name",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "找到查找数据库中查询Laurence Fishburne出演的电影。这些电影的导演都。",
+        "output": "MATCH (laurence {name: 'Laurence Fishburne'})-[:acted_in]->(movie)<-[:directed]-(director) RETURN movie.title, director.name",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查询所有人的名字和出生年份。",
+        "output": "MATCH (n) WHERE n:person RETURN n.name, n.born",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "获得有Trinity这个角色的电影。",
+        "output": "MATCH (n)-[k:acted_in]->(f) WHERE k.role = \"Trinity\" RETURN f.title",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找Laurence Fishburne与其他节点的关系类型以'ac'开头的。他在这些关系中扮演了什么角色",
+        "output": "MATCH (n)-[r]->() WHERE n.name='Laurence Fishburne' AND type(r) STARTS WITH 'ac' RETURN type(r), r.role",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找唯一标识为\"0_3937_0_0_0\"的关系。",
+        "output": "MATCH ()-[r]->() WHERE euid(r) = \"0_3937_0_0_0\" RETURN r",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从数据库中查找ID为0的节点。",
+        "output": "MATCH (n) WHERE id(n)= 0 RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "找到唯一标识为\"0_3937_0_0_0\"的关系。",
+        "output": "MATCH ()-[r]->() WHERE euid(r) = \"0_3937_0_0_0\" RETURN r",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "找到ID为0、3或5的节点。",
+        "output": "MATCH (n) WHERE id(n) IN [0, 3, 5] RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找数据库中带白色腰带的人。他们的名字、年龄和腰带颜色分别是什么？",
+        "output": "MATCH (n) WHERE n.belt = 'white' RETURN n.name, n.age, n.belt",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查询查找数据库中带白色腰带的人。他们的名字、年龄和腰带颜色分别。",
+        "output": "MATCH (n) WHERE n.belt = 'white' RETURN n.name, n.age, n.belt",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "在图中查找名字是Peter但没有腰带的人。他们的年龄是多少？",
+        "output": "MATCH (person) WHERE person.name = 'Peter' AND person.belt IS NULL RETURN person.name, person.age, person.belt",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找图数据库中名字在Andres和Tobias之间的人。他们的出生年份是多少？",
+        "output": "MATCH (a) WHERE a.name > 'Andres' AND a.name < 'Tobias' RETURN a.name, a.born",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查询跳过前3个人，返回后面的人的名字。",
+        "output": "MATCH (n:person) RETURN n.name ORDER BY n.name SKIP 3",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "筛选出name属性值大于或等于'Peter'的节点a，返回节点a的name和born属性值。",
+        "output": "MATCH (a) WHERE a.name >= 'Peter' RETURN a.name, a.born",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "找到数据库中具有euid=0_3937_0_0_0的关系，并返回其相连的节点对。",
+        "output": "MATCH (a)-[r]->(b) WHERE euid(r)=\"0_3937_0_0_0\" RETURN a,b",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "将2.3转为整数后返回，并重命名为integer。",
+        "output": "RETURN toInteger('2.3') AS integer",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找具有belt属性值为'white'或belt属性为空的所有节点，并返回这些节点的name、age和belt属性值，同时按照name属性值升序排列返回的结果。",
+        "output": "MATCH (n) WHERE n.belt = 'white' OR n.belt IS NULL RETURN n.name, n.age, n.belt ORDER BY n.name",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找所有belt属性值为'white' 或belt属性为空的节点，返回这些节点的name、age和belt属性值，按照节点的name属性值升序排列返回的结果。",
+        "output": "MATCH (n) WHERE n.belt = 'white' OR n.belt IS NULL RETURN n.name, n.age, n.belt ORDER BY n.name",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "筛选出名称在字典序上等于或在'Peter'之后的所有节点，返回所有节点的name和born属性值。",
+        "output": "MATCH (a) WHERE a.name >= 'Peter' RETURN a.name, a.born",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "将'one','two','three'作为临时结果集coll，返回coll和coll的最后一个元素。",
+        "output": "WITH ['one','two','three'] AS coll RETURN coll, last(coll)",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "返回数据库中的所有匹配到的节点。",
+        "output": "MATCH (n) RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "找到符合(a)-[r]->(b)关系，过滤条件是 euid(r)的值必须等于0_3937_0_0_0，返回所有符合条件的a,b节点。",
+        "output": "MATCH (a)-[r]->(b) WHERE euid(r)=\"0_3937_0_0_0\" RETURN a,b",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查询图数据库中名称为Carrie-Anne Moss的节点，并返回该节点的 born 属性值，且将该值重命名为SomethingTotallyDifferent。",
+        "output": "MATCH (a {name: 'Carrie-Anne Moss'}) RETURN a.born AS SomethingTotallyDifferent",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "节点n,返回n.name,只保留前10项。",
+        "output": "MATCH (n) RETURN n.name LIMIT 10",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从图数据库中查找所有带有person标签的节点，并按照节点的name属性值排序，跳过第一个结果，返回接下来的两个结果name属性值。",
+        "output": "MATCH (n:person) RETURN n.name ORDER BY n.name SKIP 1 LIMIT 2",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "将'Anne', 'John', 'Bill', 'Diane', 'Eve'作为临时结果集names，从names中检索数据，并返回names列表中的第二到四个元素。",
+        "output": "WITH ['Anne', 'John', 'Bill', 'Diane', 'Eve'] AS names RETURN names[1..3] AS result",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "从图数据库中查找属性belt为white或为空的节点n，返回这些节点n的name、age和belt属性，同时按照节点的name属性排序。",
+        "output": "MATCH (n) WHERE n.belt = 'white' OR n.belt IS NULL RETURN n.name, n.age, n.belt ORDER BY n.name",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找名称为Carrie-Anne Moss的节点,返回该节点的born属性值，并将其重命名为SomethingTotallyDifferent。",
+        "output": "MATCH (a {name: 'Carrie-Anne Moss'}) RETURN a.born AS SomethingTotallyDifferent",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找图数据库中具有euid=0_3937_0_0_0关系，并返回与这些关系相关联的两个节点。",
+        "output": "MATCH (a)-[r]->(b) WHERE euid(r)=\"0_3937_0_0_0\" RETURN a,b",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "找到符合(a)-[r]->(b)关系，过滤条件是 euid(r)的值必须等于0_3937_0_0_0，返回所有符合条件的a,b节点。",
+        "output": "MATCH (a)-[r]->(b) WHERE euid(r)=\"0_3937_0_0_0\" RETURN a,b",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "在数据库中的所有节点中，跳过第一个节点，并返回接下来最多100个节点。",
+        "output": "MATCH (n) RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查询标签为person的节点的相关信息，结果按id降序排序，保留去除第1个数据后的2个数据。",
+        "output": "MATCH (n:person) RETURN n.name ORDER BY n.name SKIP 1 LIMIT 2",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "返回数据库中的所有节点。",
+        "output": "MATCH (n) RETURN n",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "将11.5转为浮点数并返回。",
+        "output": "RETURN toFloat('11.5')",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "查找所有带有person标签的节点，按照name属性值进行升序排序，跳过排序后的第一个结果，返回接下来的两个结果的name属性值。",
+        "output": "MATCH (n:person) RETURN n.name ORDER BY n.name SKIP 1 LIMIT 2",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "将'Anne', 'John', 'Bill', 'Diane', 'Eve'作为临时结果集names，从names中检索数据，并返回其中的第二到四个元素。",
+        "output": "WITH ['Anne', 'John', 'Bill', 'Diane', 'Eve'] AS names RETURN names[1..3] AS result",
+        "history": []
+    },
+    {
+        "db_id": "common",
+        "instruction": "",
+        "input": "将'one','two','three'作为临时结果集coll，返回coll和coll的第一个元素。",
+        "output": "WITH ['one','two','three'] AS coll RETURN coll, head(coll)",
+        "history": []
+    }
+]

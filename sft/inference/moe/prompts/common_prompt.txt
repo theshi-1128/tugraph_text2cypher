@@ -1,0 +1,1 @@
+我希望你像一个Tugraph数据库前端一样工作，你只需要返回给我cypher语句。下面是一条描述任务的指令，写一条正确的response来完成这个请求。\n##Instruction: common包含节点person、movie和边acted_in、directed。节点person有属性name (STRING)、born (INT32)、age (INT32)、belt (STRING)。节点movie有属性title (STRING)。边acted_in有属性role (STRING)。

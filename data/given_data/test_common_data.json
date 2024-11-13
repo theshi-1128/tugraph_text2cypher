@@ -1,0 +1,242 @@
+[
+    {
+        "db_id": "common",
+        "question": "与Laurence Fishburne有关的电影有哪些？"
+    },
+    {
+        "db_id": "common",
+        "question": "Carrie-Anne Moss与哪些不同的节点存在关系？"
+    },
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne出演或参与的电影（仅限电影节点）有哪些？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人中有哪些不同的出生年份？"
+    },
+    {
+        "db_id": "common",
+        "question": "怎么查询Carrie-Anne Moss的出生年份？"
+    },
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne与电影之间的关系类型有哪些？"
+    },
+    {
+        "db_id": "common",
+        "question": "查询所有电影的标题。"
+    },
+    {
+        "db_id": "common",
+        "question": "出演《黑客帝国》的演员有哪些？"
+    },
+    {
+        "db_id": "common",
+        "question": "查询在《黑客帝国》中，演员们分别扮演了什么角色？"
+    },
+    {
+        "db_id": "common",
+        "question": "查询哪些人出演或执导了《黑客帝国》？"
+    },
+    {
+        "db_id": "common",
+        "question": "查询Laurence Fishburne出演的电影有哪些？这些电影的导演都是谁？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的名字和出生年份是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "出生于2000年之后的人有哪些，他们的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "有Trinity这个角色的电影有哪些？"
+    },
+    {
+        "db_id": "common",
+        "question": "有哪些人有出生年份的记录？他们的名字和出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "名字以'Pet'开头的人有哪些，他们的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "名字以'ter'结尾的人有哪些，他们的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "名字中包含'ete'的人有哪些，他们的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "名字不以's'结尾的人有哪些，他们的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne与其他节点的关系类型以'ac'开头的有哪些？他在这些关系中扮演了什么角色"
+    },
+    {
+        "db_id": "common",
+        "question": "唯一标识为\"0_3937_0_0_0\"的关系是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "ID为0的节点是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "唯一标识为\"0_3937_0_0_0\"的关系是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "ID为0、3或5的节点是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne或Tobias的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "带白色腰带的人有哪些？他们的名字、年龄和腰带颜色分别是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "名字是Peter但没有腰带的人是谁？他们的年龄是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "名字在Andres和Tobias之间的人有哪些？他们的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "跳过前3个人，返回后面的人的名字是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "前3个人的名字是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "查询人节点Jada Pinkett Smith和电影《黑客帝国》，创建这两个节点之前的write关系。"
+    },
+    {
+        "db_id": "common",
+        "question": "如何创建Jada Pinkett Smith与《黑客帝国》中扮演Trinity的\"acted_in\"关系？"
+    },
+    {
+        "db_id": "common",
+        "question": "返回所有节点的ID是什么？"
+    },
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne与其他具有出边关系的节点的关系类型有哪些？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的平均出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人中最晚的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人中最早的出生年份是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的出生年份是什么（以集合形式返回）？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的出生年份的总体标准差是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的出生年份的样本标准差是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的出生年份的样本方差是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的出生年份的总体方差是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "所有人的出生年份的总和是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "Laurence Fishburne的标签是什么？他出生年份是多少？他与其他节点的关系总数是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "查找Laurence Fishburne，返回其标签、出生年份和他与其他节点的关系总数。"
+    },
+    {
+        "db_id": "common",
+        "question": "获得名字是Carrie-Anne Moss的节点的信息。"
+    },
+    {
+        "db_id": "common",
+        "question": "从数据库中查找出生于1967年或名字是Meg Ryan的人。"
+    },
+    {
+        "db_id": "common",
+        "question": "从数据库中查找与Laurence Fishburne有关的电影。"
+    },
+    {
+        "db_id": "common",
+        "question": "在图中查找Laurence Fishburne出演或参与的电影（仅限电影节点）。"
+    },
+    {
+        "db_id": "common",
+        "question": "查询Laurence Fishburne与电影之间的关系类型。"
+    },
+    {
+        "db_id": "common",
+        "question": "在图中查找前3个人的名字。"
+    },
+    {
+        "db_id": "common",
+        "question": "获得返回所有节点的ID。"
+    },
+    {
+        "db_id": "common",
+        "question": "查找图数据库中Laurence Fishburne与其他具有出边关系的节点的关系类型。"
+    },
+    {
+        "db_id": "common",
+        "question": "查找数据库中Laurence Fishburne的标签。他出生年份是多少？他与其他节点的关系总数是多少？"
+    },
+    {
+        "db_id": "common",
+        "question": "查找图数据库中返回第一个节点的键。"
+    },
+    {
+        "db_id": "common",
+        "question": "找到返回第一个节点的标签。"
+    },
+    {
+        "db_id": "common",
+        "question": "从数据库中查找['John', 'Mark', 'Jonathan', 'Bill']名字列表中，名字以\"Jo\"开头的人。"
+    },
+    {
+        "db_id": "common",
+        "question": "在图中查找在由[2, 4, 7, 9, 12]组成的数字列表中，数字等于4或大于6且小于10的数字。"
+    },
+    {
+        "db_id": "common",
+        "question": "找到列表 [2, 3, 4, 5]中包含2、3或8的数字。"
+    },
+    {
+        "db_id": "common",
+        "question": "查找图数据库中两个列表相加的结果。"
+    }
+]

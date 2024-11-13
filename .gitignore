@@ -1,0 +1,14 @@
+data/generate_data/data_aug_pipeline1
+data/generate_data/data_aug_pipeline2/conclude_question_dir
+data/generate_data/data_aug_pipeline2/conclude_rules
+data/generate_data/data_aug_pipeline2/conclude_train_data
+data/generate_data/data_aug_pipeline2/extract_question_dir
+data/generate_data/data_aug_pipeline2/gen_cyphers
+data/generate_data/data_aug_pipeline2/gen_questions
+data/generate_data/data_aug_pipeline2/qwen-pairs
+data/generate_data/data_aug_pipeline3/gen_from_test/data
+data/generate_data/data_aug_pipeline3/gen_from_test/data
+sft/inference/SGLang
+sft/inference/moe/new_common-problem.txt
+sft/result
+sft/sft-data

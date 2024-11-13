@@ -1,0 +1,57 @@
+{
+	"db_id": "common",
+	"schema": [
+		{
+		"label": "person",
+		"type": "VERTEX",
+		"primary": "name",
+		"properties": [
+			{
+			"name": "name",
+			"type": "STRING"
+			},
+			{
+			"name": "born",
+			"type": "INT32",
+			"description":"Year"
+			},
+            {
+			"name": "age",
+			"type": "INT32"
+			},
+			{
+			"name": "belt",
+			"type": "STRING",
+            "description":"腰带的颜色",
+			"optional": true
+			}
+			]
+		},
+		{
+		"label": "movie",
+		"primary": "title",
+		"type": "VERTEX",
+		"properties": [
+			{
+			"name": "title",
+			"type": "STRING",
+			"index": true
+			}
+			]
+		},
+		{
+			"label": "acted_in",
+			"type": "EDGE",
+			"properties": [
+                {
+                "name": "role",
+                "type": "STRING"
+                }
+			    ]
+		},
+		{
+		"label": "directed",
+		"type": "EDGE"
+		}
+	]
+}

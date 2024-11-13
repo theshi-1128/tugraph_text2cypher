@@ -1,0 +1,32 @@
+Total cypher num: 200
+
+Keyword counts:
+MATCH: 196
+WHERE: 40
+RETURN: 201
+AND: 28
+STARTS: 1
+WITH: 13
+IN: 1
+IS: 4
+NULL: 4
+ORDER: 19
+BY: 19
+SKIP: 12
+AS: 18
+OR: 3
+DISTINCT: 10
+LIMIT: 5
+CREATE: 4
+OPTIONAL: 14
+DESC: 4
+ASC: 3
+true: 2
+UNION: 2
+ALL: 2
+CASE: 3
+WHEN: 3
+THEN: 3
+ELSE: 3
+END: 3
+SET: 1

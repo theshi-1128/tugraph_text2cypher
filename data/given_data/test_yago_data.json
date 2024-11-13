@@ -1,0 +1,162 @@
+[
+    {
+        "db_id": "yago",
+        "question": "查询ID为0、2和3的节点，创建0在2中出演角色为\"testaha\"，0与3结婚的关系，返回新建的关系。"
+    },
+    {
+        "db_id": "yago",
+        "question": "查找节点ID为4的节点的出边的唯一标识符"
+    },
+    {
+        "db_id": "yago",
+        "question": "返回所有节点及其各自的属性信息"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询并更新所有权重为40的KNOWS关系r其新的权重为原权重加1"
+    },
+    {
+        "db_id": "yago",
+        "question": "找到F认识I这条关系并将其删除"
+    },
+    {
+        "db_id": "yago",
+        "question": "找出名为'A'的人和名为'C'的人之间存在的关系并进行删除操作"
+    },
+    {
+        "db_id": "yago",
+        "question": "删除名为A的Person节点"
+    },
+    {
+        "db_id": "yago",
+        "question": "找名为B的人然后删除这些信息"
+    },
+    {
+        "db_id": "yago",
+        "question": "添加一个名字叫Caocao的人节点，并设置其出生年份为155年，性别为1"
+    },
+    {
+        "db_id": "yago",
+        "question": "创建一个名为Sunquan的Person节点，其出生年份为182年，性别为1"
+    },
+    {
+        "db_id": "yago",
+        "question": "添加一个名字叫Guanyu的人节点，并设置其出生年份为160年，性别为1"
+    },
+    {
+        "db_id": "yago",
+        "question": "创建一个名为Zhangfei的人节点，其出生年份为153年，性别为1"
+    },
+    {
+        "db_id": "yago",
+        "question": "创建节点北京，包含名称北京、面积16410.54平方公里和人口2154.2万的属性信息"
+    },
+    {
+        "db_id": "yago",
+        "question": "创建或更新名为Liubei的Person节点，其中性别为1，如果存在则确保出生年份为2020；返回名字、性别和出生年份信息。"
+    },
+    {
+        "db_id": "yago",
+        "question": "如果存在名为Liubei的Person节点，将其性别属性设为0，出生年份属性设为2050，并返回这个人的名字性别及出生年份。"
+    },
+    {
+        "db_id": "yago",
+        "question": "合并创建或匹配一个名为Huatuo的人节点并返回这个人的名字"
+    },
+    {
+        "db_id": "yago",
+        "question": "查找或创建名为'Liubei'的Person节点，然后返回这个人的出生年份和性别信息"
+    },
+    {
+        "db_id": "yago",
+        "question": "合并创建或更新名为'zhangsan'的人员节点，并设置其出生年份为2020，返回该出生年份。"
+    },
+    {
+        "db_id": "yago",
+        "question": "合并或创建名为'zhangsan'的人员节点，创建名为'xiaoming'的人员节点，最后返回这个创建的'xiaoming'节点。"
+    },
+    {
+        "db_id": "yago",
+        "question": "创建或更新名为'zhangsan'和'lisi'的两个人节点并返回它们"
+    },
+    {
+        "db_id": "yago",
+        "question": "查找名字为张三的人员，更新其出生年份为2023，并通过合并操作确保名字为王五的人员存在，最后返回王五的信息。"
+    },
+    {
+        "db_id": "yago",
+        "question": "移除名为Liam Neeson的节点的名称属性，返回其原有的名字和出生年份信息"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询所有不同的电影标题并按字母顺序排列"
+    },
+    {
+        "db_id": "yago",
+        "question": "找出所有不同的电影标题并按字母顺序排列返回前三个"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询与Vanessa Redgrave通过两条路径相关联的所有不同人物，返回这些人物的名字，并且按照名字排序，在结果中跳过前两个记录后显示接下来的三个名字。"
+    },
+    {
+        "db_id": "yago",
+        "question": "创建连接Lindsay Lohan和The Parent Trap的关系，其中Lindsay Lohan是这部电影的导演。"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询与最多演员或导演合作过的三部电影是什么？展示电影名称及合作的人员名字，按合作人员数量降序排列并仅显示前三部电影的结果"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询Person节点中有多少个年龄属性"
+    },
+    {
+        "db_id": "yago",
+        "question": "计算有多少人是13岁或者年龄超过了40岁的？"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询所有不是自身指向自己的关系,并返回这些关系关联的两个不同节点"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询图中共有多少条关系"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询所有MARRIED关系的数量并返回结果"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询与任意电影相关联的关系总数是多少"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询人与电影之间存在的关系总数"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询所有存在的MARRIED关系并计算数量"
+    },
+    {
+        "db_id": "yago",
+        "question": "计算所有MARRIED和BORN_IN关系的数量"
+    },
+    {
+        "db_id": "yago",
+        "question": "找出所有城市的名字然后把结果和列表[1,2]合并起来"
+    },
+    {
+        "db_id": "yago",
+        "question": "计算所有Person节点的出生年份总和然后取相反数"
+    },
+    {
+        "db_id": "yago",
+        "question": "找出所有边的唯一标识符返回"
+    },
+    {
+        "db_id": "yago",
+        "question": "查询节点ID等于4的节点所关联的所有边的边UID。"
+    }
+]

@@ -1,0 +1,90 @@
+{
+	"db_id": "the_three_body",
+	"schema": [
+      {
+        "label" : "person",
+        "type" : "VERTEX",
+        "primary" : "name",
+        "properties" : [
+          {"name" : "name", "type":"STRING"},
+          {"name" : "introduce", "type":"STRING"}
+        ]
+      },
+      {
+        "label" : "organization",
+        "type" : "VERTEX",
+        "primary" : "name",
+        "properties" : [
+          {"name" : "name", "type":"STRING"},
+          {"name" : "introduce", "type":"STRING", "optional": true}
+        ]
+      },
+      {
+        "label" : "plan",
+        "type" : "VERTEX",
+        "primary" : "name",
+        "properties" : [
+          {"name" : "name", "type":"STRING"},
+          {"name" : "content", "type":"STRING"}
+        ]
+      },
+      {
+        "label" : "time",
+        "type" : "VERTEX",
+        "primary" : "name",
+        "properties" : [
+          {"name" : "name", "type":"STRING"},
+          {"name" : "time", "type":"STRING"},
+          {"name" : "important_events", "type":"STRING"}
+        ]
+      },
+      {
+        "label" : "person_person",
+        "type" : "EDGE",
+        "properties" : [
+          {"name" : "relation", "type" : "STRING", "optional": true}
+        ],
+        "constraints": [["person", "person"]]
+      },
+      {
+        "label" : "person_plan",
+        "type" : "EDGE",
+        "properties" : [
+          {"name" : "relation", "type" : "STRING", "optional": true}
+        ],
+        "constraints": [["person", "plan"]]
+      },
+      {
+        "label" : "person_organization",
+        "type" : "EDGE",
+        "properties" : [
+          {"name" : "relation", "type" : "STRING", "optional": true}
+        ],
+        "constraints": [["person", "organization"]]
+      },
+      {
+        "label" : "organization_plan",
+        "type" : "EDGE",
+        "properties" : [
+          {"name" : "relation", "type" : "STRING", "optional": true}
+        ],
+        "constraints": [["organization", "plan"]]
+      },
+      {
+        "label" : "organization_organization",
+        "type" : "EDGE",
+        "properties" : [
+          {"name" : "relation", "type" : "STRING", "optional": true}
+        ],
+        "constraints": [["organization", "organization"]]
+      },
+      {
+        "label" : "time_time",
+        "type" : "EDGE",
+        "properties" : [
+          {"name" : "relation", "type" : "STRING", "optional": true}
+        ],
+        "constraints": [["time", "time"]]
+      }
+    ]
+}

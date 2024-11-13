@@ -1,0 +1,44 @@
+[
+    {
+        "db_id": "finbench",
+        "instruction": "",
+        "input": "给定一个src账户260083977992279253，在startTime1627020616747=和endTime=1669690342640之间的特定时间范围内，找到从src到dst的所有金额超过阈值的转出（edge），返回转出次数和金额总和。",
+        "output": "MATCH (n:Account{id:260083977992279253}) WITH n MATCH (n)-[e:transfer]->(m:Account) WHERE e.amount > 0.0 AND e.timestamp > 1627020616747 AND e.timestamp < 1669690342640 WITH m.id as dstId, count(e) as numEdges, sum(e.amount) as sumAmount RETURN dstId, numEdges, round(sumAmount * 1000) / 1000 as sumAmount ORDER BY sumAmount DESC, dstId ASC",
+        "history": []
+    },
+    {
+        "db_id": "finbench",
+        "instruction": "",
+        "input": "查找账户4779452526250437773，在startTime1627020616747=和endTime=1669690342640之间的时间范围内，其他账户向该账户转入金额超过100的转账记录。返回转入的数量和金额总和。",
+        "output": "MATCH (n:Account{id:4779452526250437773})<-[e:transfer]-(m:Account) WHERE e.amount > 100.0 AND e.timestamp > 1627020616747 AND e.timestamp < 1669690342640 WITH m.id as srcId, count(e) as numEdges, sum(e.amount) as sumAmount RETURN srcId, numEdges, round(sumAmount * 1000) / 1000 as sumAmount ORDER BY sumAmount DESC, srcId ASC",
+        "history": []
+    },
+    {
+        "db_id": "finbench",
+        "instruction": "",
+        "input": "首先查找所有向src账户id是243478878511713854转过账的中间账户m，然后找到m的转账对象中是黑户的账号dst，且src和dst账号id不同，以上转账记录时间在1627020616747到1669690342640范围内，返回去重后的dst账号id并排序。",
+        "output": "MATCH (src:Account{id:243478878511713854})<-[e1:transfer]-(m:Account)-[e2:transfer]->(dst:Account) WHERE dst.isBlocked = true AND src.id <> dst.id AND e1.timestamp > 1627020616747 AND e1.timestamp < 1669690342640 AND e2.timestamp > 1627020616747 AND e2.timestamp < 1669690342640 RETURN DISTINCT dst.id as dstId ORDER BY dstId ASC",
+        "history": []
+    },
+    {
+        "db_id": "finbench",
+        "instruction": "",
+        "input": "根据账户id4817170722885471951，找到1627020616747-1669690342640时间段内的所有转入和转出关系，返回转入和转出各自的总金额和最大金额，如果转入或转出边不存在，则返回-1作为最大金额值。",
+        "output": "MATCH (n:Account{id:%d}) WITH n OPTIONAL MATCH (n)-[e:transfer]->(m:Account) WHERE e.timestamp > 1627020616747 AND e.timestamp < 1669690342640 WITH n, sum(e.amount) as sumEdge1Amount, max(e.amount) as maxEdge1Amount, count(e) as numEdge1 OPTIONAL MATCH (n)<-[e:transfer]-(m:Account) WHERE e.timestamp > 1627020616747 AND e.timestamp < 1669690342640 WITH sumEdge1Amount, maxEdge1Amount, numEdge1, sum(e.amount) as sumEdge2Amount, max(e.amount) as maxEdge2Amount, count(e) as numEdge2 RETURN round(sumEdge1Amount * 1000) / 1000 as sumEdge1Amount, CASE WHEN maxEdge1Amount < 0 THEN -1 ELSE round(maxEdge1Amount * 1000) / 1000 END as maxEdge1Amount, numEdge1, round(sumEdge2Amount * 1000) / 1000 as sumEdge2Amount, CASE WHEN maxEdge2Amount < 0 THEN -1 ELSE round(maxEdge2Amount * 1000) / 1000 END as maxEdge2Amount, numEdge2",
+        "history": []
+    },
+    {
+        "db_id": "finbench",
+        "instruction": "",
+        "input": "查找一个id是4817170722885471951的账户的createTime、isBlocked和type属性。",
+        "output": "MATCH (n:Account{id:4817170722885471951}) RETURN n.createTime as createTime, n.isBlocked as isBlocked, n.type as type",
+        "history": []
+    },
+    {
+        "db_id": "finbench",
+        "instruction": "",
+        "input": "查询账户id为177335832397484055的账户在627020616747-1669690342640时间范围内，来自黑账户的转入量占其所有转入量的比例。返回该比例。如果给定账户没有转入记录，则返回-1。",
+        "output": "OPTIONAL MATCH (n:Account{id:177335832397484055})<-[e:transfer]-(m:Account) WHERE e.amount > 0.0 AND e.timestamp > 627020616747 AND e.timestamp < 1669690342640 AND m.isBlocked=true WITH count(m) * 1.0 as numM OPTIONAL MATCH (n:Account{id:177335832397484055})<-[e:transfer]-(m:Account) WITH count(m) as numIn, numM RETURN CASE WHEN numIn = 0 THEN -1 ELSE round(numM / numIn * 1000) / 1000 END as blockRatio",
+        "history": []
+    }
+]

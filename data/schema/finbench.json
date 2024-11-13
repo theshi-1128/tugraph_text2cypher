@@ -1,0 +1,396 @@
+{
+	"db_id": "finbench",
+	"schema": [
+        {
+            "label": "Person",
+            "type": "VERTEX",
+            "primary": "id",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "INT64"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING"
+                },
+                {
+                    "name": "isBlocked",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "createTime",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "gender",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "birthday",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "Account",
+            "type": "VERTEX",
+            "primary": "id",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "INT64"
+                },
+                {
+                    "name": "createTime",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "isBlocked",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING"
+                },
+                {
+                    "name": "nickname",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "phonenum",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "freqLoginType",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "lastLoginTime",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "accountLevel",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "Medium",
+            "type": "VERTEX",
+            "primary": "id",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "INT64"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING"
+                },
+                {
+                    "name": "isBlocked",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "createTime",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "lastLoginTime",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "riskLevel",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "Loan",
+            "type": "VERTEX",
+            "primary": "id",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "INT64"
+                },
+                {
+                    "name": "loanAmount",
+                    "type": "DOUBLE"
+                },
+                {
+                    "name": "balance",
+                    "type": "DOUBLE"
+                },
+                {
+                    "name": "createTime",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "loanUsage",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "interestRate",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "Company",
+            "type": "VERTEX",
+            "primary": "id",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "INT64"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING"
+                },
+                {
+                    "name": "isBlocked",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "createTime",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "business",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "description",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "transfer",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "amount",
+                    "type": "DOUBLE"
+                },
+                {
+                    "name": "orderNum",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "comment",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "payType",
+                    "type": "STRING",
+                    "optional": true
+                },
+                {
+                    "name": "goodsType",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "withdraw",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "amount",
+                    "type": "DOUBLE"
+                }
+            ]
+        },
+        {
+            "label": "repay",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "amount",
+                    "type": "DOUBLE"
+                }
+            ]
+        },
+        {
+            "label": "deposit",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "amount",
+                    "type": "DOUBLE"
+                }
+            ]
+        },
+        {
+            "label": "signIn",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "invest",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "ratio",
+                    "type": "DOUBLE"
+                }
+            ]
+        },
+        {
+            "label": "apply",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "org",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "guarantee",
+            "type": "EDGE",
+            "temporal": "timestamp",
+            "temporal_order": "DESC",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds"
+                },
+                {
+                    "name": "relation",
+                    "type": "STRING",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "own",
+            "type": "EDGE",
+            "properties": [
+                {
+                    "name": "timestamp",
+                    "type": "INT64",
+                    "description": "milliseconds",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "label": "workIn",
+            "type": "EDGE",
+            "properties": []
+        }
+    ]
+}

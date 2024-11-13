@@ -1,0 +1,373 @@
+[
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询姓名为\"量子号\",介绍为\"炮灰\"的组织u具有组织和计划间的关系的计划有哪些?返回m节点的name属性值,边r",
+        "output": "MATCH (u:organization{name:\"量子号\",introduce:\"炮灰\"})-[r:organization_plan]->(m:plan) RETURN m.name,r",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "获得与名为\"神迹计划\"的计划p有关的组织有哪些?返回对应的计划,e,组织",
+        "output": "MATCH (p:plan{name:\"神迹计划\"})-[e]-(neighbor:organization) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "获得名称为\"叶哲泰\",介绍为\"物理学教授,在文革中因为坚持真理被学生打死\"的人相关的计划有哪些?返回m节点的name属性值,边r",
+        "output": "MATCH (u:person{name:\"叶哲泰\",introduce:\"物理学教授,在文革中因为坚持真理被学生打死\"})-[r:person_plan]->(m:plan) RETURN DISTINCT m.name,r",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找姓名为\"威慑纪元\",时间为\"公元2208年-2270年\"的时间u具有时间关系的时间有哪些?返回m节点的name属性值,边r",
+        "output": "MATCH (u:time{name:\"威慑纪元\",time:\"公元2208年-2270年\"})-[r:time_time]->(m:time) RETURN m.name,r",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找与名字为\"关一帆\"的人p有关的人有哪些?返回对应的人,e,人",
+        "output": "MATCH (p:person{name:\"关一帆\"})-[e]-(neighbor:person) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "找到\"掩体计划\"的计划m有关的人有哪些?返回节点a,节点m",
+        "output": "MATCH (m:plan{name:\"掩体计划\"})<-[:person_plan]-(a:person) RETURN a,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中,返回节点a的name属性值,并将该值重命名为name,保留前670条数据",
+        "output": "MATCH (a{name:\"蓝星\"}) RETURN a.name AS name LIMIT 670",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "找到符合(michael{name:\"叶文洁\",introduce:\"清华大学教授、ETO精神领袖\"})-[]->()模式的节点和关系,将匹配到的路径赋值给变量p,返回匹配的链路p",
+        "output": "MATCH p=(michael{name:\"叶文洁\",introduce:\"清华大学教授、ETO精神领袖\"})-[]->() RETURN p",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找,返回a节点的name属性值,并将该值重命名为name",
+        "output": "MATCH (a{name:\"人类时代\",time:\"公元1453年-1980年\",important_events:\"叶文洁出生、红岸基地成立\"}) RETURN a.name AS name",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询所有通过time_time类型关系连接的节点对n和m,返回对应的n,时间上的关系,m",
+        "output": "MATCH (n)-[e:time_time]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "在图中查找的时间n,返回n节点的important_events属性值,n节点的name属性值,同时按照节点的important_events属性升序排序",
+        "output": "MATCH (n:time) RETURN DISTINCT n.important_events,n.name ORDER BY n.important_events",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "创建一个人物节点，其介绍为物理学教授，姓名为bbb，返回此节点。",
+        "output": "CREATE (a:person {introduce: \"物理学教授\", name: \"bbb\"}) RETURN a",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中姓名为\"二向箔\"的组织u具有组织间的关系的组织有哪些?返回m节点的introduce属性值,边r",
+        "output": "MATCH (u:organization{name:\"二向箔\"})-[r:organization_organization]->(m:organization) RETURN m.introduce,r",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找数据库中节点u人\"智子\"人物间关系有哪些?返回有关节点的introduce属性值,边r",
+        "output": "MATCH (u:person{name:\"智子\"})-[r:person_person]->(m:person) RETURN m.introduce,r",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找数据库中符合(michael{name:\"申玉菲\"})-[]->()模式的节点和关系,返回匹配的链路p",
+        "output": "MATCH p=(michael{name:\"申玉菲\"})-[]->() RETURN p",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "获得所有通过person_organization类型关系连接的节点对n和m,返回相应的节点和关系",
+        "output": "MATCH (n)-[e:person_organization]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中符合(michael{name:\"量子号\",introduce:\"炮灰\"})-[]->()模式的节点和关系,返回匹配的链路p",
+        "output": "MATCH p=(michael{name:\"量子号\",introduce:\"炮灰\"})-[]->() RETURN p",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找,返回节点a的name属性值,并将该值重命名为name",
+        "output": "MATCH (a{name:\"阶梯计划\"}) RETURN a.name AS name",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找,返回a节点的introduce属性值,并将该值重命名为introduce",
+        "output": "MATCH (a{name:\"叶哲泰\"}) RETURN a.introduce AS introduce",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找符合(michael{name:\"伊万\",introduce:\"万有引力号维护工程师\"})-[]->()模式的节点和关系,返回匹配的链路p,跳过前3条数据",
+        "output": "MATCH p=(michael{name:\"伊万\",introduce:\"万有引力号维护工程师\"})-[]->() RETURN p SKIP 3",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找的计划n,返回n节点的content属性值,n节点的content属性值,同时按照节点的content属性降序排序",
+        "output": "MATCH (n:plan) RETURN n.content,n.content ORDER BY n.content DESC",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询边为人物关系的节点和路径。",
+        "output": "MATCH (n)-[e:person_person]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中与姓名为\"PDC\"的组织p有关的计划有哪些?返回对应的组织,e,计划",
+        "output": "MATCH (p:organization{name:\"PDC\"})-[e]-(neighbor:plan) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找所有通过organization_organization类型关系连接的节点对n和m,返回相应的节点和关系",
+        "output": "MATCH (n)-[e:organization_organization]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中与名字为\"PIA\"的组织p有关的人有哪些?返回子图",
+        "output": "MATCH (p:organization{name:\"PIA\"})-[e]-(neighbor:person) RETURN DISTINCT p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "在图中查找与名为\"雾伞计划\"的计划p有关的人有哪些?返回对应的计划,e,人",
+        "output": "MATCH (p:plan{name:\"雾伞计划\"})-[e]-(neighbor:person) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "在图中查找与名字为\"PIA\"的组织p有关的组织有哪些?返回相应的节点和关系",
+        "output": "MATCH (p:organization{name:\"PIA\"})-[e]-(neighbor:organization) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "获得的人n,返回n节点的introduce属性值,n节点的introduce属性值,同时按照节点的introduce属性排序",
+        "output": "MATCH (n:person) RETURN n.introduce,n.introduce ORDER BY n.introduce",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "获得与姓名为\"DX3906星系黑域纪元\"的时间p有关的时间有哪些?返回相应的节点和关系,跳过前4条数据",
+        "output": "MATCH (p:time{name:\"DX3906星系黑域纪元\"})-[e]-(neighbor:time) RETURN p,e,neighbor SKIP 4",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找数据库中与人名为\"托马斯·维德\"的节点p有关的计划有哪些?返回相应的节点和关系",
+        "output": "MATCH (p:person{name:\"托马斯·维德\"})-[e]-(neighbor:plan) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找数据库中名称为\"威慑纪元\",时间为\"公元2208年-2270年\"的时间线m有关的时间线有哪些?返回节点a,节点m",
+        "output": "MATCH (m:time{name:\"威慑纪元\",time:\"公元2208年-2270年\"})<-[:time_time]-(a:time) RETURN a,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中所有通过person_person类型关系连接的节点对n和m,返回相应的节点和关系",
+        "output": "MATCH (n)-[e:person_person]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找数据库中所有通过person_plan类型关系连接的节点对n和m,返回子图",
+        "output": "MATCH (n)-[e:person_plan]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "与面壁计划有关的人有哪些？",
+        "output": "MATCH (p:plan {name: \"面壁计划\"})-[e]-(neighbor:person) RETURN neighbor,p,e",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询所有通过organization_plan类型关系连接的节点对n和m,返回子图",
+        "output": "MATCH (n)-[e:organization_plan]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询与\"智子\"的组织m有关的组织有哪些?返回节点a,节点m",
+        "output": "MATCH (m:organization{name:\"智子\"})<-[:organization_organization]-(a:organization) RETURN a,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找所有通过person_organization类型关系连接的节点对n和m,返回子图",
+        "output": "MATCH (n)-[e:person_organization]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "以可选的方式找到与名为\"危机纪元\"的时间p有关的时间有哪些?返回相应的节点和关系",
+        "output": "OPTIONAL MATCH (p:time{name:\"危机纪元\"})-[e]-(neighbor:time) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中与名称为\"PIA\"的组织m有出边关系的人哪些?返回节点a,节点m",
+        "output": "MATCH (m:organization{name:\"PIA\"})<-[:person_organization]-(a:person) RETURN a,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找与名字为\"PDC\"的组织p有关的组织有哪些?返回相应的节点和关系",
+        "output": "MATCH (p:organization{name:\"PDC\"})-[e]-(neighbor:organization) RETURN p,e,neighbor",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "以可选的方式查找数据库中与名称为\"古筝行动\"的计划m有关的组织有哪些?返回节点a,节点m",
+        "output": "OPTIONAL MATCH (m:plan{name:\"古筝行动\"})<-[:organization_plan]-(a:organization) RETURN a,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询所有通过organization_plan类型关系连接的节点对n和m,返回对应的n,组织和计划间的关系,m",
+        "output": "MATCH (n)-[e:organization_plan]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询叶文洁和汪淼这两个人之间的的共同关联的人物都有谁。",
+        "output": "MATCH (a:person {name: \"叶文洁\"})-[e1:person_person]->(n)<-[e2:person_person]-(b:person {name: \"汪淼\"}) RETURN a,b,n,e1,e2",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "以可选的方式查找数据库中符合(michael{name:\"太阳系\",introduce:\"\"})-[]->()模式的节点和关系,将匹配到的路径赋值给变量p,返回匹配的链路p",
+        "output": "OPTIONAL MATCH p=(michael{name:\"太阳系\",introduce:\"\"})-[]->() RETURN p",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "在图中查找所有通过person_person类型关系连接的节点对n和m，并返回这些节点对以及它们之间的person_person关系。",
+        "output": "MATCH (n)-[e:person_person]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "获得人物关系姓名为\"魏成\",介绍为\"数学天才，和申玉菲只是形式上的婚姻，申玉菲想通过他的数学能力，解决三体问题\"的人m的人有哪些?返回节点a,节点m",
+        "output": "MATCH (m:person{name:\"魏成\",introduce:\"数学天才，和申玉菲只是形式上的婚姻，申玉菲想通过他的数学能力，解决三体问题\"})<-[:person_person]-(a:person) RETURN a,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中符合(michael{name:\"银河纪元\"})-[]->()模式的节点和关系,将匹配到的路径赋值给变量p,返回匹配的链路p,跳过前10条数据",
+        "output": "MATCH p=(michael{name:\"银河纪元\"})-[]->() RETURN p SKIP 10",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "从数据库中查找所有通过person_plan类型关系连接的节点对n和m,返回对应的n,人物和计划的关系,m",
+        "output": "MATCH (n)-[e:person_plan]-(m) RETURN n,e,m",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查找图数据库中的组织n,返回n节点的name属性值,n节点的name属性值,按照节点的name属性升序排列返回的结果",
+        "output": "MATCH (n:organization) RETURN n.name,n.name ORDER BY n.name",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "获得\"弗雷德里克·泰勒相关的组织有哪些?返回m节点的name属性值,边r",
+        "output": "MATCH (u:person{name:\"弗雷德里克·泰勒\"})-[r:person_organization]->(m:organization) RETURN DISTINCT m.name,r",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "查询与叶文洁关联的人物有关的人物，返回子图。",
+        "output": "MATCH (a:person {name: \"叶文洁\"})-[e1:person_person]->(n)-[e2:person_person]->(b:person) RETURN a,b,n,e1,e2",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "找到人物叶文洁，设置她的介绍信息为清华大学教授、ETO精神领袖、首位和三体人交流的人，返回此节点。",
+        "output": "MATCH (p:person {name: \"叶文洁\"}) SET p.introduce = \"清华大学教授、ETO精神领袖、首位和三体人交流的人\" RETURN p",
+        "history": []
+    },
+    {
+        "db_id": "the_three_body",
+        "instruction": "",
+        "input": "将返回图中所有通过person_person关系相连的节点和关系。",
+        "output": "MATCH (n)-[e:person_person]-(m) RETURN n,e,m",
+        "history": []
+    }
+]

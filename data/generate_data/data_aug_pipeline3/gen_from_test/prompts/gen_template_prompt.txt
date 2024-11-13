@@ -1,0 +1,4 @@
+question: {question}
+answer: {cypher}
+请你将question和answer转化为模板的形式.
+##请注意：返回的格式严格按照 {"question": , "cypher": }

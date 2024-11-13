@@ -1,0 +1,60 @@
+{
+	"db_id": "yago",
+	"schema": [
+        {
+            "label" : "Person",
+            "type" : "VERTEX",
+            "primary" : "name",
+            "properties" : [
+                {"name" : "name", "type":"STRING"},
+                {"name" : "age", "type":"INT16", "optional":true},
+                {"name" : "birthyear", "type":"INT16", "optional":true},
+                {"name" : "gender", "type":"INT8", "optional":true},
+                {"name" : "phone", "type":"INT16","unique":false, "index":true}
+            ]
+        },
+        {
+            "label" : "City",
+            "type" : "VERTEX",
+            "primary" : "name",
+            "properties" : [
+                {"name" : "name", "type":"STRING"},
+                {"name" : "area", "type":"DOUBLE"},
+                {"name" : "population", "type":"DOUBLE"}
+            ]
+        },
+        {
+            "label" : "Film",
+            "type" : "VERTEX",
+            "primary" : "title",
+            "properties" : [
+                {"name" : "title", "type":"STRING"}
+            ]
+        },
+        {"label" : "HAS_CHILD", "type" : "EDGE"},
+        {"label" : "MARRIED", "type" : "EDGE"},
+        {
+            "label" : "BORN_IN",
+            "type" : "EDGE",
+            "properties" : [
+                {"name" : "weight", "type":"FLOAT", "optional":true}
+            ]
+        },
+        {
+            "label" : "KNOWS",
+            "type" : "EDGE",
+            "properties" : [
+                {"name" : "weight", "type":"FLOAT", "optional":true}
+            ]
+        },
+        {"label" : "DIRECTED", "type" : "EDGE"},
+        {"label" : "WROTE_MUSIC_FOR", "type" : "EDGE"},
+        {
+            "label" : "ACTED_IN",
+            "type" : "EDGE",
+            "properties" : [
+                {"name" : "charactername", "type":"STRING"}
+            ]
+        }
+    ]
+}
