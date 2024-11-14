@@ -1,10 +1,11 @@
-2024 CCF BDCI 
+# 2024 CCF BDCI 
 
-赛题2 「AI for TuGraph」小样本条件下的自然语言至图查询语言翻译大模型微调
+赛题2 「AI for TuGraph」小样本条件下的自然语言至图查询语言翻译大模型微调 A榜12名思路分享
 
-A榜12名思路分享
+If you find this work useful in your own research, please feel free to leave a star⭐️!
 
-# 细节：
+
+## 细节：
 1.微调模型qwen2.5-14b-instruct
 
 2.第一阶段训练数据构造方法：从200条训练数据总结构造规则，随机组合，结合schema生成训练数据
